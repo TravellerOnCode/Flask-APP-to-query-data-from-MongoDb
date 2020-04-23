@@ -30,7 +30,10 @@ collection = mongo.db.products
 def predict():
     
     data = request.get_json(force=True)
-    filter_list = data["filters"]
+    try:    
+        filter_list = data["filters"]
+    except:
+        filter_list = []
     query = data["query_type"]
     ob = explore_database()
     #print(query)
